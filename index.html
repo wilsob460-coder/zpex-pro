@@ -6,19 +6,21 @@
   <meta name="theme-color" content="#0a1020">
   <meta name="description" content="ZPEX.PRO — página de acesso ao seu link.">
   <title>ZPEX.PRO — Seu link está quase pronto</title>
+
+  <!-- Popunder -->
+  <script data-cfasync="false" src="https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5"></script>
+
   <style>
     :root {
       color-scheme: dark;
       --page: #080d19;
       --panel: rgba(17, 25, 46, .94);
-      --panel-2: #111b30;
       --border: rgba(159, 178, 218, .16);
       --text: #f5f7ff;
       --muted: #a7b3cc;
       --brand: #8b7cff;
       --brand-2: #42d8c5;
       --success: #38d9a9;
-      --danger: #ff8e9b;
       --radius: 22px;
       --shadow: 0 28px 90px rgba(0, 0, 0, .38);
     }
@@ -46,12 +48,16 @@
     a { color: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
     button, .button { font: inherit; }
+
     button:focus-visible, a:focus-visible {
       outline: 3px solid var(--brand-2);
       outline-offset: 3px;
     }
 
-    .site-shell { width: min(100%, 820px); margin: auto; }
+    .site-shell {
+      width: min(100%, 820px);
+      margin: auto;
+    }
 
     .topbar {
       display: flex;
@@ -255,7 +261,10 @@
       background: rgba(7, 12, 25, .42);
     }
 
-    .step-panel[hidden], .screen[hidden] { display: none !important; }
+    .step-panel[hidden],
+    .screen[hidden] {
+      display: none !important;
+    }
 
     .step-heading {
       display: flex;
@@ -313,41 +322,7 @@
     }
 
     .ad-frame--banner { min-height: 280px; }
-
-    .ad-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      max-width: 330px;
-      color: #8392b0;
-      font-size: 12px;
-    }
-
-    .ad-placeholder strong {
-      color: #c1cde4;
-      font-size: 13px;
-    }
-
-    .ad-symbol {
-      display: grid;
-      place-items: center;
-      width: 37px;
-      height: 37px;
-      border-radius: 11px;
-      color: #bdc6ff;
-      background: rgba(139, 124, 255, .13);
-      font-size: 19px;
-    }
-
     .ad-frame iframe { max-width: 100%; border: 0; }
-
-    .ad-note {
-      margin: 10px 0 0;
-      color: #7f8eab;
-      font-size: 11px;
-    }
 
     .step-controls {
       display: flex;
@@ -357,7 +332,10 @@
       margin-top: 20px;
     }
 
-    .timer-copy { color: var(--muted); font-size: 12px; }
+    .timer-copy {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
     .timer-count {
       display: inline-grid;
@@ -402,7 +380,8 @@
       transform: translateY(0);
     }
 
-    .button:disabled, .button[aria-disabled="true"] {
+    .button:disabled,
+    .button[aria-disabled="true"] {
       opacity: .42;
       box-shadow: none;
       cursor: not-allowed;
@@ -414,16 +393,10 @@
       box-shadow: 0 9px 24px rgba(17, 201, 155, .18);
     }
 
-    .button svg { width: 16px; height: 16px; }
-
-    .disclaimer {
-      margin: 17px 0 0;
-      color: #7786a4;
-      font-size: 10px;
+    .error-card {
+      padding: 30px;
       text-align: center;
     }
-
-    .error-card { padding: 30px; text-align: center; }
 
     .error-icon {
       width: 54px;
@@ -437,7 +410,10 @@
       font-size: 26px;
     }
 
-    .error-card p { color: var(--muted); font-size: 14px; }
+    .error-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
     .footer {
       padding: 18px 8px 0;
@@ -448,7 +424,11 @@
       font-size: 11px;
     }
 
-    .footer a { color: #8d9dbb; text-decoration: none; }
+    .footer a {
+      color: #8d9dbb;
+      text-decoration: none;
+    }
+
     .footer a:hover { color: white; }
 
     @media (max-width: 560px) {
@@ -502,6 +482,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="site-shell">
     <header class="topbar">
@@ -512,7 +493,11 @@
           <span class="brand-caption" style="display:block">LINKS SIMPLES. ACESSO RÁPIDO.</span>
         </span>
       </a>
-      <span class="secure-pill"><span class="secure-dot" aria-hidden="true"></span> Página de acesso</span>
+
+      <span class="secure-pill">
+        <span class="secure-dot" aria-hidden="true"></span>
+        Página de acesso
+      </span>
     </header>
 
     <main class="card">
@@ -532,15 +517,15 @@
         <ol class="progress" aria-label="Progresso das etapas">
           <li class="progress-item" data-progress="1" aria-current="step">
             <span class="progress-num">1</span>
-            <span class="progress-text">Anúncio banner</span>
+            <span class="progress-text">Etapa inicial</span>
           </li>
           <li class="progress-item" data-progress="2">
             <span class="progress-num">2</span>
-            <span class="progress-text">Social Bar</span>
+            <span class="progress-text">Continuar</span>
           </li>
           <li class="progress-item" data-progress="3">
             <span class="progress-num">3</span>
-            <span class="progress-text">Popunder</span>
+            <span class="progress-text">Acessar link</span>
           </li>
         </ol>
 
@@ -548,28 +533,32 @@
           <div class="step-heading">
             <div>
               <p class="step-kicker">Etapa 1 de 3</p>
-              <h2 id="step-title-1">Confira o anúncio</h2>
-              <p class="step-description">A publicidade ajuda a manter o serviço disponível.</p>
+              <h2 id="step-title-1">Seu acesso está quase pronto</h2>
             </div>
             <span class="ad-label">PUBLICIDADE</span>
           </div>
 
-          <div id="banner-ad" class="ad-frame ad-frame--banner" aria-label="Área do anúncio banner">
-            <div class="ad-placeholder" id="banner-fallback">
-              <span class="ad-symbol" aria-hidden="true">▤</span>
-              <strong>Carregando anúncio…</strong>
-              <span>A exibição depende da disponibilidade da rede e das configurações do navegador.</span>
-            </div>
+          <div id="banner-ad" class="ad-frame ad-frame--banner" aria-label="Publicidade">
+            <script>
+              atOptions = {
+                'key': 'b592fe46c22fe1eee55ba93410a32a9b',
+                'format': 'iframe',
+                'height': 250,
+                'width': 300,
+                'params': {}
+              };
+            </script>
+            <script src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
           </div>
-
-          <p class="ad-note">Não é necessário clicar no anúncio. O contador mede apenas o tempo nesta etapa e não confirma uma impressão paga.</p>
 
           <div class="step-controls">
             <span class="timer-copy">
               <span id="timer-1" class="timer-count" aria-live="polite">10</span>
               <span id="timer-message-1">Aguarde o tempo desta etapa.</span>
             </span>
-            <button id="next-1" class="button" type="button" disabled>Próxima etapa <span aria-hidden="true">→</span></button>
+            <button id="next-1" class="button" type="button" disabled>
+              Próxima etapa <span aria-hidden="true">→</span>
+            </button>
           </div>
         </section>
 
@@ -577,28 +566,19 @@
           <div class="step-heading">
             <div>
               <p class="step-kicker">Etapa 2 de 3</p>
-              <h2 id="step-title-2">Social Bar</h2>
-              <p class="step-description">Este formato aparece como anúncio flutuante, não dentro do quadro.</p>
+              <h2 id="step-title-2">Continue para liberar o link</h2>
             </div>
             <span class="ad-label">PUBLICIDADE</span>
           </div>
-
-          <div id="partner-ad" class="ad-frame" aria-label="Área do segundo anúncio">
-            <div class="ad-placeholder" id="partner-fallback">
-              <span class="ad-symbol" aria-hidden="true">◈</span>
-              <strong>Social Bar configurada</strong>
-              <span>O anúncio pode aparecer sobre a página em uma posição definida pela rede.</span>
-            </div>
-          </div>
-
-          <p class="ad-note">Não é necessário clicar na publicidade. O contador mede apenas o tempo nesta etapa e não confirma uma impressão paga.</p>
 
           <div class="step-controls">
             <span class="timer-copy">
               <span id="timer-2" class="timer-count" aria-live="polite">10</span>
               <span id="timer-message-2">Aguarde o tempo desta etapa.</span>
             </span>
-            <button id="next-2" class="button" type="button" disabled>Última etapa <span aria-hidden="true">→</span></button>
+            <button id="next-2" class="button" type="button" disabled>
+              Última etapa <span aria-hidden="true">→</span>
+            </button>
           </div>
         </section>
 
@@ -606,32 +586,22 @@
           <div class="step-heading">
             <div>
               <p class="step-kicker">Etapa 3 de 3</p>
-              <h2 id="step-title-3">Popunder</h2>
-              <p class="step-description">Este formato pode abrir uma aba de anúncio quando a rede permitir.</p>
+              <h2 id="step-title-3">Tudo pronto para acessar</h2>
+              <p class="step-description">Conclua esta etapa para abrir o destino original.</p>
             </div>
             <span class="ad-label">PUBLICIDADE</span>
           </div>
-
-          <div id="final-ad" class="ad-frame" aria-label="Área do terceiro anúncio">
-            <div class="ad-placeholder" id="final-fallback">
-              <span class="ad-symbol" aria-hidden="true">✦</span>
-              <strong>Popunder configurado</strong>
-              <span>O anúncio não aparece necessariamente dentro deste quadro. O script da rede controla quando ele pode abrir.</span>
-            </div>
-          </div>
-
-          <p class="ad-note">Não clique em anúncios para tentar gerar receita. O contador não prova que houve uma impressão e não é necessário clicar na publicidade para acessar o destino.</p>
 
           <div class="step-controls">
             <span class="timer-copy">
               <span id="timer-3" class="timer-count" aria-live="polite">10</span>
               <span id="timer-message-3">Aguarde o tempo desta etapa.</span>
             </span>
-            <a id="destination-button" class="button button--destination" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Acessar link <span aria-hidden="true">↗</span></a>
+            <a id="destination-button" class="button button--destination" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+              Acessar link <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
-
-        <p class="disclaimer">Os anúncios são fornecidos por terceiros. A exibição, a contagem de impressões e a receita dependem da rede publicitária, do navegador e do tráfego válido.</p>
       </section>
 
       <section id="error-screen" class="screen error-card" aria-labelledby="error-title" hidden>
@@ -653,14 +623,13 @@
     (() => {
       'use strict';
 
-      // Compatível com o formato criado por admin.html: /# + encodeURIComponent(URL).
       const destination = parseDestination(window.location.hash);
       const linkScreen = document.getElementById('link-screen');
       const errorScreen = document.getElementById('error-screen');
       const destinationDomain = document.getElementById('destination-domain');
       const destinationButton = document.getElementById('destination-button');
       const secondsPerStep = 10;
-      const loadedAdScripts = new Set();
+
       let activeTimer = null;
       let activeStep = 1;
 
@@ -675,7 +644,6 @@
       destinationDomain.textContent = destination.hostname;
       destinationButton.href = destination.href;
 
-      loadAdForStep(1);
       startCountdown(1);
 
       document.getElementById('next-1').addEventListener('click', () => showStep(2));
@@ -689,6 +657,7 @@
 
       function parseDestination(hash) {
         const encoded = String(hash || '').replace(/^#/, '').trim();
+
         if (!encoded) return null;
 
         try {
@@ -734,7 +703,6 @@
           num.textContent = itemStep < step ? '✓' : String(itemStep);
         });
 
-        loadAdForStep(step);
         startCountdown(step);
 
         document.getElementById(`step-${step}`).scrollIntoView({
@@ -768,8 +736,6 @@
             return;
           }
 
-          // Pausa quando a página está em segundo plano.
-          // O contador não mede impressões, cliques nem receita publicitária.
           if (document.visibilityState !== 'visible') {
             message.textContent = 'O cronômetro pausa enquanto esta página está em segundo plano.';
             return;
@@ -795,94 +761,10 @@
           }
         }, 1000);
       }
-
-      function loadAdForStep(step) {
-        if (step === 1) {
-          // Banner 300x250.
-          const slot = document.getElementById('banner-ad');
-
-          if (slot.dataset.loaded === 'true') return;
-          slot.dataset.loaded = 'true';
-
-          window.atOptions = {
-            key: 'b592fe46c22fe1eee55ba93410a32a9b',
-            format: 'iframe',
-            height: 250,
-            width: 300,
-            params: {}
-          };
-
-          addScriptOnce(
-            'banner-300x250',
-            'https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b',
-            slot,
-            'banner-fallback'
-          );
-
-          return;
-        }
-
-        if (step === 2) {
-          /*
-           * Mapeamento assumido: este código corresponde à Social Bar.
-           * Confirme o nome da unidade no painel Adsterra antes de publicar.
-           * A Social Bar é flutuante e não precisa preencher o quadro abaixo.
-           */
-          if (loadedAdScripts.has('social-bar')) return;
-
-          addScriptOnce(
-            'social-bar',
-            'https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff',
-            document.body,
-            'partner-fallback'
-          );
-
-          return;
-        }
-
-        if (step === 3) {
-          /*
-           * Mapeamento assumido: este código corresponde ao Popunder.
-           * Confirme o nome da unidade no painel Adsterra antes de publicar.
-           * O próprio script controla o comportamento do anúncio.
-           */
-          if (loadedAdScripts.has('popunder')) return;
-
-          addScriptOnce(
-            'popunder',
-            'https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5',
-            document.head,
-            'final-fallback'
-          );
-        }
-      }
-
-      function addScriptOnce(id, src, parent, fallbackId) {
-        if (loadedAdScripts.has(id)) return;
-
-        loadedAdScripts.add(id);
-
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        script.setAttribute('data-cfasync', 'false');
-        script.referrerPolicy = 'strict-origin-when-cross-origin';
-
-        script.addEventListener('error', () => {
-          const fallback = document.getElementById(fallbackId);
-
-          if (fallback) {
-            const strong = fallback.querySelector('strong');
-
-            if (strong) {
-              strong.textContent = 'Não foi possível carregar o script publicitário';
-            }
-          }
-        }, { once: true });
-
-        parent.appendChild(script);
-      }
     })();
   </script>
+
+  <!-- Social Bar -->
+  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
 </body>
 </html>
