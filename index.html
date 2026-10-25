@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -7,7 +8,10 @@
   <meta name="description" content="ZPEX.PRO — página de acesso ao seu link.">
   <title>ZPEX.PRO — Seu link está quase pronto</title>
 
-  <!-- Popunder -->
+  <!-- Adsterra Social Bar -->
+  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
+
+  <!-- Adsterra Popunder -->
   <script data-cfasync="false" src="https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5"></script>
 
   <style>
@@ -25,8 +29,14 @@
       --shadow: 0 28px 90px rgba(0, 0, 0, .38);
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { min-width: 320px; scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      scroll-behavior: smooth;
+    }
 
     body {
       min-height: 100vh;
@@ -45,11 +55,22 @@
       line-height: 1.5;
     }
 
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button, .button { font: inherit; }
+    a {
+      color: inherit;
+    }
 
-    button:focus-visible, a:focus-visible {
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    .button {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
       outline: 3px solid var(--brand-2);
       outline-offset: 3px;
     }
@@ -123,7 +144,6 @@
       border-radius: var(--radius);
       background: linear-gradient(155deg, rgba(23, 34, 59, .97), var(--panel));
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
     .eyebrow {
@@ -173,7 +193,9 @@
       font-size: 18px;
     }
 
-    .link-copy { min-width: 0; }
+    .link-copy {
+      min-width: 0;
+    }
 
     .link-label {
       display: block;
@@ -321,8 +343,34 @@
       text-align: center;
     }
 
-    .ad-frame--banner { min-height: 280px; }
-    .ad-frame iframe { max-width: 100%; border: 0; }
+    .ad-frame--banner {
+      min-height: 280px;
+    }
+
+    .banner-slot {
+      display: block;
+      width: 300px;
+      height: 250px;
+      max-width: 100%;
+      flex: 0 0 250px;
+      margin: 0 auto;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .banner-slot iframe {
+      display: block;
+      width: 300px;
+      max-width: 100%;
+      height: 250px;
+      margin: 0 auto;
+      border: 0;
+    }
+
+    .ad-frame iframe {
+      max-width: 100%;
+      border: 0;
+    }
 
     .step-controls {
       display: flex;
@@ -393,6 +441,11 @@
       box-shadow: 0 9px 24px rgba(17, 201, 155, .18);
     }
 
+    .button svg {
+      width: 16px;
+      height: 16px;
+    }
+
     .error-card {
       padding: 30px;
       text-align: center;
@@ -429,7 +482,9 @@
       text-decoration: none;
     }
 
-    .footer a:hover { color: white; }
+    .footer a:hover {
+      color: white;
+    }
 
     @media (max-width: 560px) {
       body {
@@ -437,12 +492,31 @@
         justify-content: flex-start;
       }
 
-      .topbar { margin: 5px 3px 15px; }
-      .brand-mark { width: 38px; height: 38px; }
-      .brand-name { font-size: 15px; }
-      .secure-pill { font-size: 10px; }
-      .card { padding: 19px 15px; border-radius: 18px; }
-      .progress { gap: 6px; }
+      .topbar {
+        margin: 5px 3px 15px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .secure-pill {
+        font-size: 10px;
+      }
+
+      .card {
+        padding: 19px 15px;
+        border-radius: 18px;
+      }
+
+      .progress {
+        gap: 6px;
+      }
 
       .progress-item {
         flex-direction: column;
@@ -451,20 +525,45 @@
         padding: 9px;
       }
 
-      .progress-text { width: 100%; font-size: 10px; }
-      .step-panel { padding: 13px; }
-      .step-heading { gap: 8px; }
-      .ad-label { font-size: 9px; padding: 4px 6px; }
-      .ad-frame { min-height: 250px; padding: 8px; }
-      .ad-frame--banner { min-height: 260px; }
+      .progress-text {
+        width: 100%;
+        font-size: 10px;
+      }
+
+      .step-panel {
+        padding: 13px;
+      }
+
+      .step-heading {
+        gap: 8px;
+      }
+
+      .ad-label {
+        font-size: 9px;
+        padding: 4px 6px;
+      }
+
+      .ad-frame {
+        min-height: 250px;
+        padding: 8px;
+      }
+
+      .ad-frame--banner {
+        min-height: 260px;
+      }
 
       .step-controls {
         align-items: stretch;
         flex-direction: column;
       }
 
-      .timer-copy { text-align: center; }
-      .button { width: 100%; }
+      .timer-copy {
+        text-align: center;
+      }
+
+      .button {
+        width: 100%;
+      }
 
       .footer {
         flex-direction: column;
@@ -474,7 +573,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
@@ -538,17 +639,19 @@
             <span class="ad-label">PUBLICIDADE</span>
           </div>
 
-          <div id="banner-ad" class="ad-frame ad-frame--banner" aria-label="Publicidade">
-            <script>
-              atOptions = {
-                'key': 'b592fe46c22fe1eee55ba93410a32a9b',
-                'format': 'iframe',
-                'height': 250,
-                'width': 300,
-                'params': {}
-              };
-            </script>
-            <script src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
+          <div class="ad-frame ad-frame--banner" aria-label="Publicidade">
+            <div id="banner-ad" class="banner-slot">
+              <script type="text/javascript">
+                atOptions = {
+                  'key': 'b592fe46c22fe1eee55ba93410a32a9b',
+                  'format': 'iframe',
+                  'height': 250,
+                  'width': 300,
+                  'params': {}
+                };
+              </script>
+              <script type="text/javascript" src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
+            </div>
           </div>
 
           <div class="step-controls">
@@ -633,7 +736,8 @@
       let activeTimer = null;
       let activeStep = 1;
 
-      document.getElementById('year').textContent = String(new Date().getFullYear());
+      document.getElementById('year').textContent =
+        String(new Date().getFullYear());
 
       if (!destination) {
         linkScreen.hidden = true;
@@ -646,8 +750,13 @@
 
       startCountdown(1);
 
-      document.getElementById('next-1').addEventListener('click', () => showStep(2));
-      document.getElementById('next-2').addEventListener('click', () => showStep(3));
+      document.getElementById('next-1').addEventListener('click', () => {
+        showStep(2);
+      });
+
+      document.getElementById('next-2').addEventListener('click', () => {
+        showStep(3);
+      });
 
       destinationButton.addEventListener('click', event => {
         if (destinationButton.getAttribute('aria-disabled') === 'true') {
@@ -658,7 +767,9 @@
       function parseDestination(hash) {
         const encoded = String(hash || '').replace(/^#/, '').trim();
 
-        if (!encoded) return null;
+        if (!encoded) {
+          return null;
+        }
 
         try {
           const decoded = decodeURIComponent(encoded);
@@ -675,7 +786,9 @@
       }
 
       function showStep(step) {
-        if (step < 1 || step > 3) return;
+        if (step < 1 || step > 3) {
+          return;
+        }
 
         if (activeTimer !== null) {
           window.clearInterval(activeTimer);
@@ -716,6 +829,7 @@
 
         const number = document.getElementById(`timer-${step}`);
         const message = document.getElementById(`timer-message-${step}`);
+
         const nextButton = step < 3
           ? document.getElementById(`next-${step}`)
           : destinationButton;
@@ -763,8 +877,5 @@
       }
     })();
   </script>
-
-  <!-- Social Bar -->
-  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
 </body>
 </html>
