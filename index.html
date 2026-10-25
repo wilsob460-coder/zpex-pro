@@ -1,36 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a1020">
-  <meta name="description" content="ZPEX.PRO — página de acesso ao seu link.">
-  <title>ZPEX.PRO — Seu link está quase pronto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10130d">
+  <meta name="description" content="ZPEX.PRO — encurtador de links.">
+  <title>ZPEX.PRO — Encurtador de links</title>
 
-  <!-- Adsterra Social Bar -->
-  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const hash = location.hash.slice(1).trim();
 
-  <!-- Adsterra Popunder -->
+      if (!hash) {
+        root.classList.add("route-home");
+        return;
+      }
+
+      try {
+        const target = new URL(decodeURIComponent(hash));
+        if (target.protocol === "http:" || target.protocol === "https:") {
+          window.__zpexTarget = target.href;
+          root.classList.add("route-redirect");
+        } else {
+          root.classList.add("route-error");
+        }
+      } catch {
+        root.classList.add("route-error");
+      }
+    })();
+  </script>
+
+  <!-- Popunder -->
   <script data-cfasync="false" src="https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5"></script>
 
   <style>
     :root {
       color-scheme: dark;
-      --page: #080d19;
-      --panel: rgba(17, 25, 46, .94);
-      --border: rgba(159, 178, 218, .16);
-      --text: #f5f7ff;
-      --muted: #a7b3cc;
-      --brand: #8b7cff;
-      --brand-2: #42d8c5;
-      --success: #38d9a9;
+      --bg: #10130d;
+      --panel: #191e15;
+      --soft: #20271a;
+      --line: rgba(220,242,187,.14);
+      --text: #f2f5eb;
+      --muted: #a7b19a;
+      --lime: #c8f169;
+      --mint: #72e0bf;
       --radius: 22px;
-      --shadow: 0 28px 90px rgba(0, 0, 0, .38);
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       min-width: 320px;
@@ -40,51 +58,38 @@
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 28px 16px;
+      padding: 26px 15px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       color: var(--text);
       background:
-        radial-gradient(ellipse at 12% 8%, rgba(96, 79, 215, .22), transparent 38%),
-        radial-gradient(ellipse at 95% 86%, rgba(33, 179, 170, .13), transparent 34%),
-        var(--page);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        radial-gradient(ellipse at 5% 0%, rgba(200,241,105,.10), transparent 34%),
+        radial-gradient(ellipse at 95% 100%, rgba(114,224,191,.09), transparent 34%),
+        var(--bg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
       line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-    }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button,
-    .button {
-      font: inherit;
-    }
-
-    button:focus-visible,
-    a:focus-visible {
-      outline: 3px solid var(--brand-2);
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 3px solid var(--mint);
       outline-offset: 3px;
     }
 
-    .site-shell {
-      width: min(100%, 820px);
+    .shell {
+      width: min(100%, 790px);
       margin: auto;
     }
 
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 16px;
-      margin: 0 4px 20px;
+      margin: 0 3px 16px;
     }
 
     .brand {
@@ -95,37 +100,37 @@
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
+      width: 43px;
+      height: 43px;
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--brand), #5c9aff);
-      box-shadow: 0 8px 28px rgba(118, 102, 255, .28);
-      color: white;
-      font-size: 20px;
-      font-weight: 900;
+      background: var(--lime);
+      color: #18200d;
+      font-size: 22px;
+      font-weight: 950;
     }
 
     .brand-name {
-      font-weight: 850;
-      letter-spacing: .09em;
-      font-size: 17px;
+      display: block;
+      font-size: 16px;
+      letter-spacing: .12em;
+      font-weight: 900;
     }
 
     .brand-caption {
+      display: block;
       color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .02em;
+      font-size: 10px;
+      letter-spacing: .12em;
     }
 
-    .secure-pill {
-      display: inline-flex;
+    .secure {
+      display: flex;
       align-items: center;
       gap: 7px;
-      color: #cbd8ef;
-      font-size: 12px;
+      color: #c9d5bd;
+      font-size: 11px;
       white-space: nowrap;
     }
 
@@ -133,217 +138,28 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 12px rgba(56, 217, 169, .55);
+      background: var(--mint);
+      box-shadow: 0 0 11px rgba(114,224,191,.65);
     }
 
-    .card {
-      padding: clamp(20px, 5vw, 38px);
-      border: 1px solid var(--border);
+    .panel {
+      overflow: hidden;
+      padding: clamp(19px,4.5vw,34px);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(155deg, rgba(23, 34, 59, .97), var(--panel));
-      box-shadow: var(--shadow);
+      background: linear-gradient(145deg,rgba(31,38,24,.98),rgba(20,25,17,.98));
+      box-shadow: 0 24px 70px rgba(0,0,0,.35);
     }
 
-    .eyebrow {
-      margin: 0 0 9px;
-      color: #b5aaff;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(27px, 5vw, 39px);
-      line-height: 1.12;
-      letter-spacing: -.04em;
-    }
-
-    .lead {
-      max-width: 590px;
-      margin: 14px 0 23px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .link-preview {
+    .ad-shell {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-      padding: 13px 15px;
-      margin-bottom: 26px;
-      border: 1px solid rgba(139, 124, 255, .22);
-      border-radius: 15px;
-      background: rgba(10, 16, 32, .55);
-    }
-
-    .link-icon {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      flex: 0 0 auto;
-      border-radius: 11px;
-      color: #d0c9ff;
-      background: rgba(139, 124, 255, .15);
-      font-size: 18px;
-    }
-
-    .link-copy {
-      min-width: 0;
-    }
-
-    .link-label {
-      display: block;
-      margin-bottom: 2px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .link-domain {
-      display: block;
-      overflow: hidden;
-      color: #f1f3ff;
-      font-size: 13px;
-      font-weight: 700;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .progress {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 0 0 25px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .progress-item {
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 11px 12px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      color: #96a3bf;
-      background: rgba(8, 13, 25, .35);
-    }
-
-    .progress-num {
-      display: grid;
-      place-items: center;
-      width: 26px;
-      height: 26px;
-      flex: 0 0 auto;
-      border-radius: 9px;
-      background: rgba(154, 170, 204, .11);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .progress-text {
-      overflow: hidden;
-      font-size: 12px;
-      font-weight: 700;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .progress-item[aria-current="step"] {
-      border-color: rgba(139, 124, 255, .55);
-      color: #fff;
-      background: rgba(139, 124, 255, .12);
-    }
-
-    .progress-item[aria-current="step"] .progress-num {
-      color: white;
-      background: var(--brand);
-    }
-
-    .progress-item.is-complete {
-      color: #b9f7e3;
-      border-color: rgba(56, 217, 169, .25);
-    }
-
-    .progress-item.is-complete .progress-num {
-      color: #06281e;
-      background: var(--success);
-    }
-
-    .step-panel {
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: rgba(7, 12, 25, .42);
-    }
-
-    .step-panel[hidden],
-    .screen[hidden] {
-      display: none !important;
-    }
-
-    .step-heading {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 14px;
-    }
-
-    .step-kicker {
-      margin: 0 0 4px;
-      color: #b4a9ff;
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(19px, 3vw, 23px);
-      letter-spacing: -.02em;
-    }
-
-    .step-description {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .ad-label {
-      padding: 5px 8px;
-      border: 1px solid rgba(183, 197, 224, .18);
-      border-radius: 7px;
-      color: #aebbd3;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-
-    .ad-frame {
-      min-height: 270px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 10px;
       padding: 12px;
-      border: 1px dashed rgba(151, 169, 210, .27);
-      border-radius: 13px;
-      background: #0a1020;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(8,11,7,.42);
       overflow: hidden;
-      text-align: center;
-    }
-
-    .ad-frame--banner {
-      min-height: 280px;
     }
 
     .banner-slot {
@@ -351,10 +167,8 @@
       width: 300px;
       height: 250px;
       max-width: 100%;
-      flex: 0 0 250px;
-      margin: 0 auto;
+      flex: 0 0 auto;
       overflow: hidden;
-      text-align: center;
     }
 
     .banner-slot iframe {
@@ -366,37 +180,70 @@
       border: 0;
     }
 
-    .ad-frame iframe {
-      max-width: 100%;
-      border: 0;
+    .view { display: none; }
+
+    html.route-home #home-view,
+    html.route-redirect #redirect-view,
+    html.route-error #error-view {
+      display: block;
     }
 
-    .step-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: 20px;
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .17em;
+      text-transform: uppercase;
     }
 
-    .timer-copy {
+    h1 {
+      margin: 0;
+      font-size: clamp(29px,5vw,43px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(21px,3vw,27px);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .lead {
+      max-width: 570px;
+      margin: 14px 0 24px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .timer-count {
-      display: inline-grid;
-      place-items: center;
-      min-width: 29px;
-      min-height: 29px;
-      margin-right: 5px;
-      padding: 0 5px;
-      border: 1px solid rgba(139, 124, 255, .33);
-      border-radius: 9px;
-      color: white;
-      background: rgba(139, 124, 255, .12);
-      font-weight: 850;
-      font-variant-numeric: tabular-nums;
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #dce5d1;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .url-input, .result-input {
+      display: block;
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 15px;
+      border: 1px solid rgba(220,242,187,.19);
+      border-radius: 12px;
+      background: #10150d;
+      color: var(--text);
+      outline: none;
+    }
+
+    .url-input { margin-bottom: 12px; }
+    .url-input::placeholder { color: #707a66; }
+
+    .url-input:focus, .result-input:focus {
+      border-color: rgba(200,241,105,.75);
     }
 
     .button {
@@ -404,320 +251,410 @@
       align-items: center;
       justify-content: center;
       gap: 9px;
-      min-height: 47px;
-      padding: 12px 19px;
+      min-height: 48px;
+      padding: 12px 17px;
       border: 0;
       border-radius: 12px;
-      color: #fff;
-      background: linear-gradient(135deg, #8773ff, #6e80ff);
-      box-shadow: 0 9px 24px rgba(117, 104, 255, .23);
+      background: var(--lime);
+      color: #1b240f;
       font-size: 13px;
-      font-weight: 850;
+      font-weight: 900;
       text-decoration: none;
       cursor: pointer;
-      transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+      transition: filter .15s ease, transform .15s ease, opacity .15s ease;
     }
 
     .button:hover:not(:disabled):not([aria-disabled="true"]) {
-      filter: brightness(1.08);
+      filter: brightness(1.06);
       transform: translateY(-1px);
     }
 
-    .button:active:not(:disabled):not([aria-disabled="true"]) {
-      transform: translateY(0);
-    }
-
-    .button:disabled,
-    .button[aria-disabled="true"] {
+    .button:disabled, .button[aria-disabled="true"] {
       opacity: .42;
-      box-shadow: none;
       cursor: not-allowed;
     }
 
-    .button--destination {
-      background: linear-gradient(135deg, #1ecca1, #11a986);
-      color: #06291f;
-      box-shadow: 0 9px 24px rgba(17, 201, 155, .18);
+    .button-full { width: 100%; }
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--text);
     }
 
-    .button svg {
-      width: 16px;
-      height: 16px;
+    .button-mint {
+      background: var(--mint);
+      color: #0d2119;
     }
 
-    .error-card {
-      padding: 30px;
-      text-align: center;
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .result-card {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid rgba(200,241,105,.22);
+      border-radius: 15px;
+      background: rgba(200,241,105,.045);
+    }
+
+    .result-card[hidden] { display: none; }
+
+    .result-title {
+      margin: 0 0 10px;
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .result-input { min-height: 46px; font-size: 12px; }
+    .hint { margin: 10px 0 0; color: #8e9a82; font-size: 11px; }
+    .status { min-height: 18px; margin-top: 8px; color: var(--mint); font-size: 12px; }
+
+    .destination-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      margin: 18px 0 22px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(9,13,8,.38);
+    }
+
+    .destination-icon {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      background: rgba(200,241,105,.12);
+      color: var(--lime);
+      font-size: 18px;
+    }
+
+    .destination-copy { min-width: 0; }
+
+    .destination-label {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .destination-host {
+      display: block;
+      overflow: hidden;
+      font-size: 13px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 9px;
+      margin-bottom: 23px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(8,11,7,.4);
+      color: #8b9680;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      flex: 0 0 auto;
+      border-radius: 9px;
+      background: rgba(220,242,187,.08);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .step-name {
+      overflow: hidden;
+      font-size: 11px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .step-chip.current {
+      border-color: rgba(200,241,105,.44);
+      background: rgba(200,241,105,.075);
+      color: var(--text);
+    }
+
+    .step-chip.current .step-number {
+      background: var(--lime);
+      color: #17200c;
+    }
+
+    .step-chip.complete {
+      color: #b6ead7;
+      border-color: rgba(114,224,191,.24);
+    }
+
+    .step-chip.complete .step-number {
+      background: var(--mint);
+      color: #0d2119;
+    }
+
+    .step-panel {
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(9,13,8,.40);
+    }
+
+    .step-panel[hidden] { display: none !important; }
+
+    .step-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step-label {
+      margin: 0 0 5px;
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .step-description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .step-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .timerline { color: var(--muted); font-size: 12px; }
+
+    .timer {
+      display: inline-grid;
+      place-items: center;
+      min-width: 34px;
+      height: 34px;
+      margin-right: 5px;
+      padding: 0 8px;
+      border: 1px solid rgba(200,241,105,.28);
+      border-radius: 10px;
+      background: rgba(200,241,105,.08);
+      color: var(--lime);
+      font-size: 14px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
     }
 
     .error-icon {
-      width: 54px;
-      height: 54px;
       display: grid;
       place-items: center;
-      margin: 0 auto 16px;
-      border-radius: 17px;
-      color: #ffd0d5;
-      background: rgba(255, 142, 155, .12);
-      font-size: 26px;
-    }
-
-    .error-card p {
-      color: var(--muted);
-      font-size: 14px;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(243,213,120,.24);
+      border-radius: 18px;
+      background: rgba(243,213,120,.08);
+      color: #f3d578;
+      font-size: 25px;
     }
 
     .footer {
-      padding: 18px 8px 0;
       display: flex;
       justify-content: space-between;
-      gap: 14px;
-      color: #687796;
-      font-size: 11px;
-    }
-
-    .footer a {
-      color: #8d9dbb;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      color: white;
+      gap: 12px;
+      padding: 16px 5px 0;
+      color: #75806b;
+      font-size: 10px;
     }
 
     @media (max-width: 560px) {
-      body {
-        padding: 16px 11px;
-        justify-content: flex-start;
-      }
-
-      .topbar {
-        margin: 5px 3px 15px;
-      }
-
-      .brand-mark {
-        width: 38px;
-        height: 38px;
-      }
-
-      .brand-name {
-        font-size: 15px;
-      }
-
-      .secure-pill {
-        font-size: 10px;
-      }
-
-      .card {
-        padding: 19px 15px;
-        border-radius: 18px;
-      }
-
-      .progress {
-        gap: 6px;
-      }
-
-      .progress-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 9px;
-      }
-
-      .progress-text {
-        width: 100%;
-        font-size: 10px;
-      }
-
-      .step-panel {
-        padding: 13px;
-      }
-
-      .step-heading {
-        gap: 8px;
-      }
-
-      .ad-label {
-        font-size: 9px;
-        padding: 4px 6px;
-      }
-
-      .ad-frame {
-        min-height: 250px;
-        padding: 8px;
-      }
-
-      .ad-frame--banner {
-        min-height: 260px;
-      }
-
-      .step-controls {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .timer-copy {
-        text-align: center;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+      body { padding: 14px 10px; align-items: flex-start; }
+      .shell { margin: 8px auto; }
+      .topbar { margin: 0 2px 13px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 14px; }
+      .brand-caption { font-size: 9px; }
+      .secure { font-size: 10px; }
+      .panel { padding: 18px 14px; border-radius: 18px; }
+      .ad-shell { padding: 8px; margin-bottom: 13px; }
+      .steps { gap: 6px; }
+      .step-chip { align-items: flex-start; flex-direction: column; gap: 6px; padding: 8px; }
+      .step-name { max-width: 100%; font-size: 10px; }
+      .step-panel { padding: 13px; }
+      .step-top { gap: 6px; }
+      .step-controls { flex-direction: column; align-items: stretch; }
+      .timerline { text-align: center; }
+      .button-row { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      .footer { flex-direction: column; align-items: center; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="site-shell">
+  <div class="shell">
     <header class="topbar">
-      <a class="brand" href="/" aria-label="ZPEX.PRO — página inicial">
+      <a class="brand" href="./" aria-label="ZPEX.PRO página inicial">
         <span class="brand-mark" aria-hidden="true">Z</span>
         <span>
           <span class="brand-name">ZPEX.PRO</span>
-          <span class="brand-caption" style="display:block">LINKS SIMPLES. ACESSO RÁPIDO.</span>
+          <span class="brand-caption">LINKS EM UM NOVO NÍVEL</span>
         </span>
       </a>
-
-      <span class="secure-pill">
-        <span class="secure-dot" aria-hidden="true"></span>
-        Página de acesso
-      </span>
+      <span class="secure"><span class="secure-dot" aria-hidden="true"></span> Link seguro</span>
     </header>
 
-    <main class="card">
-      <section id="link-screen" class="screen" aria-labelledby="page-title">
-        <p class="eyebrow">Redirecionamento seguro</p>
-        <h1 id="page-title">Seu link está quase pronto.</h1>
-        <p class="lead">Siga as etapas abaixo. Ao finalizar, o botão de acesso levará você ao endereço solicitado.</p>
+    <!-- Banner 300x250 -->
+    <aside class="ad-shell" aria-label="Publicidade">
+      <div class="banner-slot">
+        <script>
+          atOptions = {
+            'key': 'b592fe46c22fe1eee55ba93410a32a9b',
+            'format': 'iframe',
+            'height': 250,
+            'width': 300,
+            'params': {}
+          };
+        </script>
+        <script src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
+      </div>
+    </aside>
 
-        <div class="link-preview" aria-label="Destino do link">
-          <span class="link-icon" aria-hidden="true">↗</span>
-          <span class="link-copy">
-            <span class="link-label">Você será direcionado para</span>
-            <span id="destination-domain" class="link-domain">Verificando destino…</span>
+    <main class="panel">
+      <section id="home-view" class="view" aria-labelledby="home-title">
+        <p class="eyebrow">Encurtador simples</p>
+        <h1 id="home-title">Seu link. Mais direto.</h1>
+        <p class="lead">Transforme um endereço em um link ZPEX.PRO para compartilhar com facilidade.</p>
+
+        <form id="shortener-form">
+          <label class="form-label" for="original-url">Cole o endereço que deseja compartilhar</label>
+          <input class="url-input" id="original-url" type="text" inputmode="url" autocomplete="url" placeholder="https://exemplo.com/sua-pagina" required>
+          <button class="button button-full" type="submit">Gerar meu link <span aria-hidden="true">↗</span></button>
+        </form>
+
+        <div id="result-card" class="result-card" hidden>
+          <p class="result-title">Link pronto para compartilhar</p>
+          <input class="result-input" id="generated-link" type="text" readonly aria-label="Link gerado">
+          <div class="button-row">
+            <button class="button button-secondary" id="copy-link" type="button">Copiar link</button>
+            <button class="button button-mint" id="open-link" type="button">Testar link ↗</button>
+          </div>
+          <p id="copy-status" class="status" role="status" aria-live="polite"></p>
+          <p class="hint">O link abre esta página antes de seguir para o destino.</p>
+        </div>
+      </section>
+
+      <section id="redirect-view" class="view" aria-labelledby="redirect-title">
+        <p class="eyebrow">Acesso ao destino</p>
+        <h1 id="redirect-title">Seu link está quase pronto.</h1>
+        <p class="lead">Conclua as etapas para continuar ao endereço solicitado.</p>
+
+        <div class="destination-card">
+          <span class="destination-icon" aria-hidden="true">↗</span>
+          <span class="destination-copy">
+            <span class="destination-label">Destino</span>
+            <span id="destination-host" class="destination-host">Carregando…</span>
           </span>
         </div>
 
-        <ol class="progress" aria-label="Progresso das etapas">
-          <li class="progress-item" data-progress="1" aria-current="step">
-            <span class="progress-num">1</span>
-            <span class="progress-text">Etapa inicial</span>
-          </li>
-          <li class="progress-item" data-progress="2">
-            <span class="progress-num">2</span>
-            <span class="progress-text">Continuar</span>
-          </li>
-          <li class="progress-item" data-progress="3">
-            <span class="progress-num">3</span>
-            <span class="progress-text">Acessar link</span>
-          </li>
+        <ol class="steps" aria-label="Progresso">
+          <li class="step-chip current" data-step-indicator="1"><span class="step-number">1</span><span class="step-name">Continuar</span></li>
+          <li class="step-chip" data-step-indicator="2"><span class="step-number">2</span><span class="step-name">Quase lá</span></li>
+          <li class="step-chip" data-step-indicator="3"><span class="step-number">3</span><span class="step-name">Acessar</span></li>
         </ol>
 
-        <section id="step-1" class="step-panel" data-step="1" aria-labelledby="step-title-1">
-          <div class="step-heading">
+        <section id="stage-1" class="step-panel" data-stage="1" aria-labelledby="stage-title-1">
+          <div class="step-top">
             <div>
-              <p class="step-kicker">Etapa 1 de 3</p>
-              <h2 id="step-title-1">Seu acesso está quase pronto</h2>
-            </div>
-            <span class="ad-label">PUBLICIDADE</span>
-          </div>
-
-          <div class="ad-frame ad-frame--banner" aria-label="Publicidade">
-            <div id="banner-ad" class="banner-slot">
-              <script type="text/javascript">
-                atOptions = {
-                  'key': 'b592fe46c22fe1eee55ba93410a32a9b',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-                };
-              </script>
-              <script type="text/javascript" src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
+              <p class="step-label">Etapa 1 de 3</p>
+              <h2 id="stage-title-1">Preparando seu acesso</h2>
             </div>
           </div>
-
+          <p class="step-description">Aguarde o contador terminar para continuar.</p>
           <div class="step-controls">
-            <span class="timer-copy">
-              <span id="timer-1" class="timer-count" aria-live="polite">10</span>
-              <span id="timer-message-1">Aguarde o tempo desta etapa.</span>
-            </span>
-            <button id="next-1" class="button" type="button" disabled>
-              Próxima etapa <span aria-hidden="true">→</span>
-            </button>
+            <span class="timerline"><span id="timer-1" class="timer" aria-live="polite">10</span><span id="message-1">Segundos restantes</span></span>
+            <button class="button" id="next-1" type="button" disabled>Continuar →</button>
           </div>
         </section>
 
-        <section id="step-2" class="step-panel" data-step="2" aria-labelledby="step-title-2" hidden>
-          <div class="step-heading">
+        <section id="stage-2" class="step-panel" data-stage="2" aria-labelledby="stage-title-2" hidden>
+          <div class="step-top">
             <div>
-              <p class="step-kicker">Etapa 2 de 3</p>
-              <h2 id="step-title-2">Continue para liberar o link</h2>
+              <p class="step-label">Etapa 2 de 3</p>
+              <h2 id="stage-title-2">Quase lá</h2>
             </div>
-            <span class="ad-label">PUBLICIDADE</span>
           </div>
-
+          <p class="step-description">O acesso estará disponível ao concluir esta etapa.</p>
           <div class="step-controls">
-            <span class="timer-copy">
-              <span id="timer-2" class="timer-count" aria-live="polite">10</span>
-              <span id="timer-message-2">Aguarde o tempo desta etapa.</span>
-            </span>
-            <button id="next-2" class="button" type="button" disabled>
-              Última etapa <span aria-hidden="true">→</span>
-            </button>
+            <span class="timerline"><span id="timer-2" class="timer" aria-live="polite">10</span><span id="message-2">Segundos restantes</span></span>
+            <button class="button" id="next-2" type="button" disabled>Última etapa →</button>
           </div>
         </section>
 
-        <section id="step-3" class="step-panel" data-step="3" aria-labelledby="step-title-3" hidden>
-          <div class="step-heading">
+        <section id="stage-3" class="step-panel" data-stage="3" aria-labelledby="stage-title-3" hidden>
+          <div class="step-top">
             <div>
-              <p class="step-kicker">Etapa 3 de 3</p>
-              <h2 id="step-title-3">Tudo pronto para acessar</h2>
-              <p class="step-description">Conclua esta etapa para abrir o destino original.</p>
+              <p class="step-label">Etapa 3 de 3</p>
+              <h2 id="stage-title-3">Tudo pronto</h2>
             </div>
-            <span class="ad-label">PUBLICIDADE</span>
           </div>
-
+          <p class="step-description">Seu destino está liberado.</p>
           <div class="step-controls">
-            <span class="timer-copy">
-              <span id="timer-3" class="timer-count" aria-live="polite">10</span>
-              <span id="timer-message-3">Aguarde o tempo desta etapa.</span>
-            </span>
-            <a id="destination-button" class="button button--destination" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
-              Acessar link <span aria-hidden="true">↗</span>
-            </a>
+            <span class="timerline"><span id="timer-3" class="timer" aria-live="polite">10</span><span id="message-3">Segundos restantes</span></span>
+            <button class="button button-mint" id="open-destination" type="button" disabled>Acessar destino ↗</button>
           </div>
         </section>
       </section>
 
-      <section id="error-screen" class="screen error-card" aria-labelledby="error-title" hidden>
+      <section id="error-view" class="view" aria-labelledby="error-title">
         <div class="error-icon" aria-hidden="true">!</div>
-        <p class="eyebrow">Link indisponível</p>
-        <h1 id="error-title">Não encontramos o destino.</h1>
-        <p>O endereço pode estar ausente ou inválido. Gere um novo link pelo painel administrativo e tente novamente.</p>
-        <a class="button" href="/">Voltar ao início</a>
+        <p class="eyebrow">Link inválido</p>
+        <h1 id="error-title">Não encontramos esse destino.</h1>
+        <p class="lead">Gere um novo link e tente novamente.</p>
+        <a class="button" href="./">Voltar ao início</a>
       </section>
     </main>
 
     <footer class="footer">
       <span>© <span id="year">2026</span> ZPEX.PRO</span>
-      <span>Compartilhe links com responsabilidade.</span>
+      <span>Links rápidos. Acesso simples.</span>
     </footer>
   </div>
 
@@ -725,156 +662,158 @@
     (() => {
       'use strict';
 
-      const destination = parseDestination(window.location.hash);
-      const linkScreen = document.getElementById('link-screen');
-      const errorScreen = document.getElementById('error-screen');
-      const destinationDomain = document.getElementById('destination-domain');
-      const destinationButton = document.getElementById('destination-button');
-      const secondsPerStep = 10;
+      const secondsPerStage = 10;
+      const target = window.__zpexTarget || null;
+      let activeStage = 1;
+      let timerId = null;
 
-      let activeTimer = null;
-      let activeStep = 1;
+      document.getElementById('year').textContent = String(new Date().getFullYear());
 
-      document.getElementById('year').textContent =
-        String(new Date().getFullYear());
+      const form = document.getElementById('shortener-form');
 
-      if (!destination) {
-        linkScreen.hidden = true;
-        errorScreen.hidden = false;
-        return;
-      }
+      form.addEventListener('submit', event => {
+        event.preventDefault();
 
-      destinationDomain.textContent = destination.hostname;
-      destinationButton.href = destination.href;
+        const input = document.getElementById('original-url');
+        let raw = input.value.trim();
 
-      startCountdown(1);
+        if (!/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
 
-      document.getElementById('next-1').addEventListener('click', () => {
-        showStep(2);
-      });
-
-      document.getElementById('next-2').addEventListener('click', () => {
-        showStep(3);
-      });
-
-      destinationButton.addEventListener('click', event => {
-        if (destinationButton.getAttribute('aria-disabled') === 'true') {
-          event.preventDefault();
-        }
-      });
-
-      function parseDestination(hash) {
-        const encoded = String(hash || '').replace(/^#/, '').trim();
-
-        if (!encoded) {
-          return null;
-        }
+        let destination;
 
         try {
-          const decoded = decodeURIComponent(encoded);
-          const url = new URL(decoded);
-
-          if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-            return null;
-          }
-
-          return url;
-        } catch (_) {
-          return null;
-        }
-      }
-
-      function showStep(step) {
-        if (step < 1 || step > 3) {
+          destination = new URL(raw);
+        } catch {
+          input.setCustomValidity('Digite um endereço válido.');
+          input.reportValidity();
           return;
         }
 
-        if (activeTimer !== null) {
-          window.clearInterval(activeTimer);
-          activeTimer = null;
+        input.setCustomValidity('');
+
+        if (destination.protocol !== 'http:' && destination.protocol !== 'https:') {
+          input.setCustomValidity('Use um endereço HTTP ou HTTPS.');
+          input.reportValidity();
+          return;
         }
 
-        activeStep = step;
+        const shareUrl = new URL(window.location.href);
+        shareUrl.search = '';
+        shareUrl.hash = encodeURIComponent(destination.href);
 
-        document.querySelectorAll('[data-step]').forEach(panel => {
-          panel.hidden = Number(panel.dataset.step) !== step;
-        });
+        document.getElementById('generated-link').value = shareUrl.href;
+        document.getElementById('result-card').hidden = false;
+        document.getElementById('copy-status').textContent = '';
+      });
 
-        document.querySelectorAll('[data-progress]').forEach(item => {
-          const itemStep = Number(item.dataset.progress);
+      document.getElementById('copy-link').addEventListener('click', async () => {
+        const output = document.getElementById('generated-link');
+        const status = document.getElementById('copy-status');
 
-          item.classList.toggle('is-complete', itemStep < step);
-
-          if (itemStep === step) {
-            item.setAttribute('aria-current', 'step');
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(output.value);
           } else {
-            item.removeAttribute('aria-current');
+            output.focus();
+            output.select();
+            if (!document.execCommand('copy')) throw new Error('copy failed');
           }
 
-          const num = item.querySelector('.progress-num');
-          num.textContent = itemStep < step ? '✓' : String(itemStep);
+          status.textContent = 'Link copiado.';
+        } catch {
+          output.focus();
+          output.select();
+          status.textContent = 'Selecione o link e copie manualmente.';
+        }
+      });
+
+      document.getElementById('open-link').addEventListener('click', () => {
+        const output = document.getElementById('generated-link');
+        if (output.value) window.open(output.value, '_blank', 'noopener,noreferrer');
+      });
+
+      if (!target) return;
+
+      const destinationUrl = new URL(target);
+      document.getElementById('destination-host').textContent = destinationUrl.hostname;
+
+      document.getElementById('next-1').addEventListener('click', () => showStage(2));
+      document.getElementById('next-2').addEventListener('click', () => showStage(3));
+
+      document.getElementById('open-destination').addEventListener('click', () => {
+        if (activeStage === 3) window.location.assign(target);
+      });
+
+      showStage(1);
+
+      function showStage(stage) {
+        if (stage < 1 || stage > 3) return;
+
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+
+        activeStage = stage;
+
+        document.querySelectorAll('[data-stage]').forEach(panel => {
+          panel.hidden = Number(panel.dataset.stage) !== stage;
         });
 
-        startCountdown(step);
+        document.querySelectorAll('[data-step-indicator]').forEach(item => {
+          const number = Number(item.dataset.stepIndicator);
+          item.classList.toggle('complete', number < stage);
+          item.classList.toggle('current', number === stage);
+          item.querySelector('.step-number').textContent =
+            number < stage ? '✓' : String(number);
+        });
 
-        document.getElementById(`step-${step}`).scrollIntoView({
+        runTimer(stage);
+
+        document.getElementById(`stage-${stage}`).scrollIntoView({
           behavior: 'smooth',
           block: 'nearest'
         });
       }
 
-      function startCountdown(step) {
-        let remaining = secondsPerStep;
+      function runTimer(stage) {
+        let remaining = secondsPerStage;
 
-        const number = document.getElementById(`timer-${step}`);
-        const message = document.getElementById(`timer-message-${step}`);
+        const number = document.getElementById(`timer-${stage}`);
+        const message = document.getElementById(`message-${stage}`);
+        const button = stage < 3
+          ? document.getElementById(`next-${stage}`)
+          : document.getElementById('open-destination');
 
-        const nextButton = step < 3
-          ? document.getElementById(`next-${step}`)
-          : destinationButton;
-
-        if (step < 3) {
-          nextButton.disabled = true;
-        } else {
-          destinationButton.setAttribute('aria-disabled', 'true');
-        }
-
+        button.disabled = true;
         number.textContent = String(remaining);
-        message.textContent = 'Aguarde 10 segundos nesta etapa.';
+        message.textContent = 'Segundos restantes';
 
-        activeTimer = window.setInterval(() => {
-          if (activeStep !== step) {
-            window.clearInterval(activeTimer);
-            activeTimer = null;
+        timerId = window.setInterval(() => {
+          if (activeStage !== stage) {
+            clearInterval(timerId);
+            timerId = null;
             return;
           }
 
-          if (document.visibilityState !== 'visible') {
-            message.textContent = 'O cronômetro pausa enquanto esta página está em segundo plano.';
-            return;
-          }
+          if (document.visibilityState !== 'visible') return;
 
-          message.textContent = 'Aguarde o tempo desta etapa terminar.';
           remaining -= 1;
           number.textContent = String(Math.max(remaining, 0));
 
           if (remaining <= 0) {
-            window.clearInterval(activeTimer);
-            activeTimer = null;
-
-            message.textContent = step < 3
-              ? 'Etapa concluída. Você pode continuar.'
-              : 'Pronto. O link de destino está liberado.';
-
-            if (step < 3) {
-              nextButton.disabled = false;
-            } else {
-              destinationButton.setAttribute('aria-disabled', 'false');
-            }
+            clearInterval(timerId);
+            timerId = null;
+            number.textContent = '✓';
+            message.textContent = 'Etapa concluída';
+            button.disabled = false;
           }
         }, 1000);
       }
     })();
   </script>
+
+  <!-- Social Bar -->
+  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
 </body>
 </html>
