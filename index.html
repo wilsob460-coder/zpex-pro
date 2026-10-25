@@ -3,544 +3,430 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="Continue com segurança para o destino do seu link ZPEX.PRO.">
-  <title>ZPEX.PRO — Continuar para o destino</title>
-
-  <!-- Anúncio 1: script fornecido pelo proprietário da conta de anúncios. -->
-  <script data-cfasync="false" src="https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff"></script>
-
-  <!-- Anúncio 2: script fornecido pelo proprietário da conta de anúncios. -->
-  <script data-cfasync="false" src="https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5"></script>
-
+  <meta name="theme-color" content="#0a1020">
+  <meta name="description" content="ZPEX.PRO — página de acesso ao seu link.">
+  <title>ZPEX.PRO — Seu link está quase pronto</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #08111f;
-      --panel: #111d30;
-      --panel-raised: #16243a;
-      --border: #283b56;
-      --text: #f4f7fb;
-      --muted: #a6b5c9;
-      --muted-2: #71839c;
-      --blue: #63b3ff;
-      --blue-strong: #2583ed;
-      --green: #38d39f;
-      --red: #ff8d9a;
-      --radius: 20px;
+      --page: #080d19;
+      --panel: rgba(17, 25, 46, .94);
+      --panel-2: #111b30;
+      --border: rgba(159, 178, 218, .16);
+      --text: #f5f7ff;
+      --muted: #a7b3cc;
+      --brand: #8b7cff;
+      --brand-2: #42d8c5;
+      --success: #38d9a9;
+      --danger: #ff8e9b;
+      --radius: 22px;
+      --shadow: 0 28px 90px rgba(0, 0, 0, .38);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { min-height: 100%; background: var(--bg); }
+    html { min-width: 320px; scroll-behavior: smooth; }
     body {
       min-height: 100vh;
-      min-height: 100dvh;
       margin: 0;
-      padding: 24px 16px 18px;
+      padding: 28px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(ellipse at 50% -10%, rgba(37, 131, 237, .22), transparent 52%),
-        linear-gradient(180deg, #0a1424 0%, var(--bg) 64%);
+        radial-gradient(ellipse at 12% 8%, rgba(96, 79, 215, .22), transparent 38%),
+        radial-gradient(ellipse at 95% 86%, rgba(33, 179, 170, .13), transparent 34%),
+        var(--page);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
     }
 
     a { color: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
-    [hidden] { display: none !important; }
+    button, .button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--brand-2); outline-offset: 3px; }
 
-    .site-header {
-      width: min(100%, 960px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 6px 2px 26px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 1.3px;
-    }
-
+    .site-shell { width: min(100%, 820px); margin: auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 4px 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      color: #06111f;
-      background: linear-gradient(135deg, #84d3ff, #438eff);
-      box-shadow: 0 5px 18px rgba(37, 131, 237, .25);
-      font-size: 21px;
-      font-weight: 950;
-      letter-spacing: -1px;
+      width: 42px; height: 42px; display: grid; place-items: center; flex: 0 0 auto;
+      border-radius: 14px; background: linear-gradient(135deg, var(--brand), #5c9aff);
+      box-shadow: 0 8px 28px rgba(118, 102, 255, .28); color: white; font-size: 20px; font-weight: 900;
     }
-
-    .secure-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 11px;
-      border: 1px solid rgba(56, 211, 159, .22);
-      border-radius: 999px;
-      background: rgba(56, 211, 159, .07);
-      color: #a8f0d6;
-      font-size: 11px;
-      font-weight: 650;
-      white-space: nowrap;
-    }
-
-    .secure-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 3px rgba(56, 211, 159, .12);
-    }
-
-    main {
-      width: min(100%, 540px);
-      margin: auto 0;
-    }
+    .brand-name { font-weight: 850; letter-spacing: .09em; font-size: 17px; }
+    .brand-caption { color: var(--muted); font-size: 11px; letter-spacing: .02em; }
+    .secure-pill { display: inline-flex; align-items: center; gap: 7px; color: #cbd8ef; font-size: 12px; white-space: nowrap; }
+    .secure-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); box-shadow: 0 0 12px rgba(56, 217, 169, .55); }
 
     .card {
-      overflow: hidden;
-      border: 1px solid rgba(130, 164, 204, .16);
+      padding: clamp(20px, 5vw, 38px);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(20, 33, 53, .98), rgba(15, 26, 43, .98));
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
-    }
-
-    .card-content { padding: clamp(22px, 5vw, 34px); }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 14px;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .eyebrow-icon {
-      width: 23px;
-      height: 23px;
-      display: grid;
-      place-items: center;
-      border-radius: 7px;
-      background: rgba(99, 179, 255, .12);
-      font-size: 13px;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 440px;
-      font-size: clamp(26px, 6vw, 35px);
-      font-weight: 780;
-      letter-spacing: -1.1px;
-      line-height: 1.14;
-    }
-
-    .intro {
-      margin: 13px 0 25px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .ad-card {
-      margin: 0 0 24px;
-      padding: 13px;
-      border: 1px solid rgba(130, 164, 204, .15);
-      border-radius: 15px;
-      background: rgba(5, 12, 23, .42);
-    }
-
-    .ad-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 0 1px 12px;
-      color: var(--muted-2);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-
-    .ad-badge {
-      padding: 4px 7px;
-      border: 1px solid rgba(130, 164, 204, .16);
-      border-radius: 5px;
-      color: #7f91aa;
-      font-size: 9px;
-      letter-spacing: .5px;
-    }
-
-    .ad-slot {
-      min-height: 270px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(155deg, rgba(23, 34, 59, .97), var(--panel));
+      box-shadow: var(--shadow);
       overflow: hidden;
-      padding: 8px;
-      border: 1px dashed #32445f;
-      border-radius: 10px;
-      background: #0b1423;
     }
-
-    /* A unidade 300 × 250 fornecida pela rede aparece neste espaço. */
-    .ad-slot iframe {
-      display: block;
-      max-width: 100%;
-      border: 0;
+    .eyebrow { margin: 0 0 9px; color: #b5aaff; font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(27px, 5vw, 39px); line-height: 1.12; letter-spacing: -.04em; }
+    .lead { max-width: 590px; margin: 14px 0 23px; color: var(--muted); font-size: 14px; }
+    .link-preview {
+      display: flex; align-items: center; gap: 12px; min-width: 0; padding: 13px 15px; margin-bottom: 26px;
+      border: 1px solid rgba(139, 124, 255, .22); border-radius: 15px; background: rgba(10, 16, 32, .55);
     }
+    .link-icon { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 11px; color: #d0c9ff; background: rgba(139, 124, 255, .15); font-size: 18px; }
+    .link-copy { min-width: 0; }
+    .link-label { display: block; margin-bottom: 2px; color: var(--muted); font-size: 11px; }
+    .link-domain { display: block; overflow: hidden; color: #f1f3ff; font-size: 13px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
 
-    .ad-fallback {
-      max-width: 260px;
-      padding: 15px;
-      color: #71839c;
-      text-align: center;
-      font-size: 12px;
-      line-height: 1.7;
+    .progress { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 25px; padding: 0; list-style: none; }
+    .progress-item { min-width: 0; display: flex; align-items: center; gap: 9px; padding: 11px 12px; border: 1px solid var(--border); border-radius: 13px; color: #96a3bf; background: rgba(8, 13, 25, .35); }
+    .progress-num { display: grid; place-items: center; width: 26px; height: 26px; flex: 0 0 auto; border-radius: 9px; background: rgba(154, 170, 204, .11); font-size: 12px; font-weight: 800; }
+    .progress-text { overflow: hidden; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .progress-item[aria-current="step"] { border-color: rgba(139, 124, 255, .55); color: #fff; background: rgba(139, 124, 255, .12); }
+    .progress-item[aria-current="step"] .progress-num { color: white; background: var(--brand); }
+    .progress-item.is-complete { color: #b9f7e3; border-color: rgba(56, 217, 169, .25); }
+    .progress-item.is-complete .progress-num { color: #06281e; background: var(--success); }
+
+    .step-panel { padding: 20px; border: 1px solid var(--border); border-radius: 17px; background: rgba(7, 12, 25, .42); }
+    .step-panel[hidden], .screen[hidden] { display: none !important; }
+    .step-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 14px; }
+    .step-kicker { margin: 0 0 4px; color: #b4a9ff; font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(19px, 3vw, 23px); letter-spacing: -.02em; }
+    .step-description { margin: 7px 0 0; color: var(--muted); font-size: 13px; }
+    .ad-label { padding: 5px 8px; border: 1px solid rgba(183, 197, 224, .18); border-radius: 7px; color: #aebbd3; font-size: 10px; font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+    .ad-frame {
+      min-height: 270px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+      padding: 12px; border: 1px dashed rgba(151, 169, 210, .27); border-radius: 13px; background: #0a1020;
+      overflow: hidden; text-align: center;
     }
+    .ad-frame--banner { min-height: 280px; }
+    .ad-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; max-width: 330px; color: #8392b0; font-size: 12px; }
+    .ad-placeholder strong { color: #c1cde4; font-size: 13px; }
+    .ad-symbol { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 11px; color: #bdc6ff; background: rgba(139, 124, 255, .13); font-size: 19px; }
+    .ad-frame iframe { max-width: 100%; border: 0; }
+    .ad-note { margin: 10px 0 0; color: #7f8eab; font-size: 11px; }
 
-    .ad-fallback-icon {
-      display: block;
-      margin-bottom: 8px;
-      color: #526a88;
-      font-size: 25px;
+    .step-controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 20px; }
+    .timer-copy { color: var(--muted); font-size: 12px; }
+    .timer-count { display: inline-grid; place-items: center; min-width: 29px; min-height: 29px; margin-right: 5px; padding: 0 5px; border: 1px solid rgba(139, 124, 255, .33); border-radius: 9px; color: white; background: rgba(139, 124, 255, .12); font-weight: 850; font-variant-numeric: tabular-nums; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 47px;
+      padding: 12px 19px; border: 0; border-radius: 12px; color: #fff;
+      background: linear-gradient(135deg, #8773ff, #6e80ff); box-shadow: 0 9px 24px rgba(117, 104, 255, .23);
+      font-size: 13px; font-weight: 850; text-decoration: none; cursor: pointer; transition: transform .18s ease, filter .18s ease, opacity .18s ease;
     }
+    .button:hover:not(:disabled):not([aria-disabled="true"]) { filter: brightness(1.08); transform: translateY(-1px); }
+    .button:active:not(:disabled):not([aria-disabled="true"]) { transform: translateY(0); }
+    .button:disabled, .button[aria-disabled="true"] { opacity: .42; box-shadow: none; cursor: not-allowed; }
+    .button--destination { background: linear-gradient(135deg, #1ecca1, #11a986); color: #06291f; box-shadow: 0 9px 24px rgba(17, 201, 155, .18); }
+    .button svg { width: 16px; height: 16px; }
+    .disclaimer { margin: 17px 0 0; color: #7786a4; font-size: 10px; text-align: center; }
 
-    .ad-disclosure {
-      margin: 10px 2px 0;
-      color: #71839c;
-      font-size: 10px;
-      line-height: 1.6;
-      text-align: center;
+    .error-card { padding: 30px; text-align: center; }
+    .error-icon { width: 54px; height: 54px; display: grid; place-items: center; margin: 0 auto 16px; border-radius: 17px; color: #ffd0d5; background: rgba(255, 142, 155, .12); font-size: 26px; }
+    .error-card p { color: var(--muted); font-size: 14px; }
+    .footer { padding: 18px 8px 0; display: flex; justify-content: space-between; gap: 14px; color: #687796; font-size: 11px; }
+    .footer a { color: #8d9dbb; text-decoration: none; }
+    .footer a:hover { color: white; }
+
+    @media (max-width: 560px) {
+      body { padding: 16px 11px; justify-content: flex-start; }
+      .topbar { margin: 5px 3px 15px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 15px; }
+      .secure-pill { font-size: 10px; }
+      .card { padding: 19px 15px; border-radius: 18px; }
+      .progress { gap: 6px; }
+      .progress-item { flex-direction: column; align-items: flex-start; gap: 6px; padding: 9px; }
+      .progress-text { width: 100%; font-size: 10px; }
+      .step-panel { padding: 13px; }
+      .step-heading { gap: 8px; }
+      .ad-label { font-size: 9px; padding: 4px 6px; }
+      .ad-frame { min-height: 250px; padding: 8px; }
+      .ad-frame--banner { min-height: 260px; }
+      .step-controls { align-items: stretch; flex-direction: column; }
+      .timer-copy { text-align: center; }
+      .button { width: 100%; }
+      .footer { flex-direction: column; align-items: center; text-align: center; }
     }
-
-    .progress-panel {
-      margin-top: 2px;
-      padding: 18px 16px;
-      border: 1px solid rgba(130, 164, 204, .13);
-      border-radius: 13px;
-      background: rgba(255, 255, 255, .025);
-      text-align: center;
-    }
-
-    .progress-label {
-      margin: 0 0 8px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .timer {
-      margin: 0;
-      color: #fff;
-      font-size: 43px;
-      font-weight: 820;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -1px;
-      line-height: 1.2;
-    }
-
-    .timer-unit {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 650;
-      letter-spacing: 0;
-    }
-
-    .progress-track {
-      height: 5px;
-      margin: 14px 0 0;
-      overflow: hidden;
-      border-radius: 999px;
-      background: #26364d;
-    }
-
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #3988f5, #73c8ff);
-      transition: width .25s linear;
-    }
-
-    .status {
-      min-height: 20px;
-      margin: 13px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .continue-button {
-      width: 100%;
-      min-height: 54px;
-      margin-top: 18px;
-      padding: 15px 19px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 0;
-      border-radius: 11px;
-      background: linear-gradient(135deg, #75c8ff, #3a92f5);
-      box-shadow: 0 9px 24px rgba(37, 131, 237, .2);
-      color: #071425;
-      text-align: center;
-      text-decoration: none;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: filter .15s ease, transform .15s ease;
-    }
-
-    .continue-button:hover { filter: brightness(1.08); }
-    .continue-button:active { transform: translateY(1px); }
-    .continue-button:focus-visible { outline: 3px solid #a8d8ff; outline-offset: 3px; }
-
-    .error-box {
-      margin-top: 18px;
-      padding: 16px;
-      border: 1px solid rgba(255, 141, 154, .3);
-      border-radius: 12px;
-      background: rgba(255, 70, 90, .07);
-      color: #ffd7dc;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .error-title { display: block; margin-bottom: 5px; font-weight: 800; }
-    .error-actions { margin-top: 12px; }
-    .text-link { color: #a9d8ff; text-underline-offset: 3px; }
-
-    .site-footer {
-      width: min(100%, 960px);
-      padding: 26px 2px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      color: #687b95;
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .footer-brand { color: #9aabc1; font-weight: 750; letter-spacing: .6px; }
-    .footer-note { text-align: right; }
-
-    @media (max-width: 440px) {
-      body { padding: 14px 11px 14px; }
-      .site-header { padding: 6px 2px 18px; }
-      .brand { font-size: 15px; }
-      .brand-mark { width: 33px; height: 33px; }
-      .secure-label { padding: 7px 9px; font-size: 10px; }
-      .ad-card { padding: 10px; }
-      .ad-slot { min-height: 260px; padding: 5px; }
-      .timer { font-size: 39px; }
-      .site-footer { padding-top: 20px; font-size: 10px; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="ZPEX.PRO início">
-      <span class="brand-mark" aria-hidden="true">Z</span>
-      <span>ZPEX.PRO</span>
-    </a>
-    <span class="secure-label"><span class="secure-dot" aria-hidden="true"></span> Link protegido</span>
-  </header>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ZPEX.PRO — página inicial">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span><span class="brand-name">ZPEX.PRO</span><span class="brand-caption" style="display:block">LINKS SIMPLES. ACESSO RÁPIDO.</span></span>
+      </a>
+      <span class="secure-pill"><span class="secure-dot" aria-hidden="true"></span> Página de acesso</span>
+    </header>
 
-  <main>
-    <section class="card" aria-labelledby="page-title">
-      <div class="card-content">
-        <p class="eyebrow"><span class="eyebrow-icon" aria-hidden="true">↗</span> Redirecionamento de link</p>
-        <h1 id="page-title">Seu destino está quase pronto.</h1>
-        <p class="intro" id="intro">Aguarde alguns segundos. Depois, você poderá continuar para o endereço solicitado.</p>
+    <main class="card">
+      <section id="link-screen" class="screen" aria-labelledby="page-title">
+        <p class="eyebrow">Redirecionamento seguro</p>
+        <h1 id="page-title">Seu link está quase pronto.</h1>
+        <p class="lead">Siga as etapas abaixo. Ao finalizar, o botão de acesso levará você ao endereço solicitado.</p>
 
-        <section class="ad-card" id="ad-card" aria-label="Publicidade">
-          <div class="ad-heading">
-            <span>Espaço publicitário</span>
-            <span class="ad-badge">ANÚNCIO</span>
-          </div>
+        <div class="link-preview" aria-label="Destino do link">
+          <span class="link-icon" aria-hidden="true">↗</span>
+          <span class="link-copy">
+            <span class="link-label">Você será direcionado para</span>
+            <span id="destination-domain" class="link-domain">Verificando destino…</span>
+          </span>
+        </div>
 
-          <div class="ad-slot" id="ad-slot-3">
-            <div class="ad-fallback" id="ad-fallback">
-              <span class="ad-fallback-icon" aria-hidden="true">▧</span>
-              <strong>Carregando publicidade</strong><br>
-              O anúncio pode levar alguns segundos para aparecer ou não estar disponível para esta visita.
+        <ol class="progress" aria-label="Progresso das etapas">
+          <li class="progress-item" data-progress="1" aria-current="step"><span class="progress-num">1</span><span class="progress-text">Anúncio banner</span></li>
+          <li class="progress-item" data-progress="2"><span class="progress-num">2</span><span class="progress-text">Anúncio parceiro</span></li>
+          <li class="progress-item" data-progress="3"><span class="progress-num">3</span><span class="progress-text">Acessar link</span></li>
+        </ol>
+
+        <section id="step-1" class="step-panel" data-step="1" aria-labelledby="step-title-1">
+          <div class="step-heading">
+            <div>
+              <p class="step-kicker">Etapa 1 de 3</p>
+              <h2 id="step-title-1">Confira o anúncio</h2>
+              <p class="step-description">A publicidade ajuda a manter o serviço disponível.</p>
             </div>
-
-            <!-- Anúncio 3: unidade de banner 300 × 250 enviada pelo usuário. -->
-            <script>
-              var atOptions = {
-                'key': 'b592fe46c22fe1eee55ba93410a32a9b',
-                'format': 'iframe',
-                'height': 250,
-                'width': 300,
-                'params': {}
-              };
-            </script>
-            <script src="https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b"></script>
+            <span class="ad-label">PUBLICIDADE</span>
           </div>
-
-          <p class="ad-disclosure">Publicidade de terceiros. A disponibilidade depende da rede de anúncios e das configurações do navegador.</p>
+          <div id="banner-ad" class="ad-frame ad-frame--banner" aria-label="Área do anúncio banner">
+            <div class="ad-placeholder" id="banner-fallback">
+              <span class="ad-symbol" aria-hidden="true">▤</span>
+              <strong>Carregando anúncio…</strong>
+              <span>A exibição depende da disponibilidade da rede e das configurações do navegador.</span>
+            </div>
+          </div>
+          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <div class="step-controls">
+            <span class="timer-copy"><span id="timer-1" class="timer-count" aria-live="polite">5</span><span id="timer-message-1">O botão será liberado em instantes.</span></span>
+            <button id="next-1" class="button" type="button" disabled>Próxima etapa <span aria-hidden="true">→</span></button>
+          </div>
         </section>
 
-        <section class="progress-panel" id="progress-panel" aria-label="Preparação do link">
-          <p class="progress-label" id="progress-label">Seu link será liberado em</p>
-          <p class="timer" id="timer" aria-live="off">10 <span class="timer-unit">seg</span></p>
-          <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+        <section id="step-2" class="step-panel" data-step="2" aria-labelledby="step-title-2" hidden>
+          <div class="step-heading">
+            <div>
+              <p class="step-kicker">Etapa 2 de 3</p>
+              <h2 id="step-title-2">Anúncio parceiro</h2>
+              <p class="step-description">Aguarde o carregamento do formato de publicidade.</p>
+            </div>
+            <span class="ad-label">PUBLICIDADE</span>
+          </div>
+          <div id="partner-ad" class="ad-frame" aria-label="Área do segundo anúncio">
+            <div class="ad-placeholder" id="partner-fallback">
+              <span class="ad-symbol" aria-hidden="true">◈</span>
+              <strong>Carregando anúncio parceiro…</strong>
+              <span>A disponibilidade pode variar conforme a rede de anúncios.</span>
+            </div>
+          </div>
+          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <div class="step-controls">
+            <span class="timer-copy"><span id="timer-2" class="timer-count" aria-live="polite">5</span><span id="timer-message-2">O botão será liberado em instantes.</span></span>
+            <button id="next-2" class="button" type="button" disabled>Última etapa <span aria-hidden="true">→</span></button>
+          </div>
         </section>
 
-        <p class="status" id="status" role="status" aria-live="polite">Preparando o destino…</p>
-
-        <a class="continue-button" id="continue-button" href="#" target="_blank" rel="noopener noreferrer" hidden>
-          Continuar para o destino <span aria-hidden="true">↗</span>
-        </a>
-
-        <section class="error-box" id="error-box" role="alert" hidden>
-          <span class="error-title" id="error-title">Não foi possível preparar este link.</span>
-          <span id="error-description">Verifique se você abriu o link completo.</span>
-          <div class="error-actions"><a class="text-link" href="/">Voltar à página inicial</a></div>
+        <section id="step-3" class="step-panel" data-step="3" aria-labelledby="step-title-3" hidden>
+          <div class="step-heading">
+            <div>
+              <p class="step-kicker">Etapa 3 de 3</p>
+              <h2 id="step-title-3">Tudo pronto para acessar</h2>
+              <p class="step-description">Conclua esta etapa para abrir o destino original.</p>
+            </div>
+            <span class="ad-label">PUBLICIDADE</span>
+          </div>
+          <div id="final-ad" class="ad-frame" aria-label="Área do terceiro anúncio">
+            <div class="ad-placeholder" id="final-fallback">
+              <span class="ad-symbol" aria-hidden="true">✦</span>
+              <strong>Carregando anúncio parceiro…</strong>
+              <span>O formato exibido depende das configurações da rede de anúncios.</span>
+            </div>
+          </div>
+          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <div class="step-controls">
+            <span class="timer-copy"><span id="timer-3" class="timer-count" aria-live="polite">5</span><span id="timer-message-3">O acesso será liberado em instantes.</span></span>
+            <a id="destination-button" class="button button--destination" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Acessar link <span aria-hidden="true">↗</span></a>
+          </div>
         </section>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <span><span class="footer-brand">ZPEX.PRO</span><br>Links mais simples.</span>
-    <span class="footer-note">© 2026 ZPEX.PRO<br>Redirecionamento de links</span>
-  </footer>
+        <p class="disclaimer">Os anúncios são fornecidos por terceiros. A exibição, a contagem de impressões e a receita dependem da rede publicitária, do navegador e do tráfego válido.</p>
+      </section>
+
+      <section id="error-screen" class="screen error-card" aria-labelledby="error-title" hidden>
+        <div class="error-icon" aria-hidden="true">!</div>
+        <p class="eyebrow">Link indisponível</p>
+        <h1 id="error-title">Não encontramos o destino.</h1>
+        <p>O endereço pode estar ausente ou inválido. Gere um novo link pelo painel administrativo e tente novamente.</p>
+        <a class="button" href="/">Voltar ao início</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year">2026</span> ZPEX.PRO</span>
+      <span>Compartilhe links com responsabilidade.</span>
+    </footer>
+  </div>
 
   <script>
     (() => {
       'use strict';
 
-      const countdownSeconds = 10;
-      const title = document.getElementById('page-title');
-      const intro = document.getElementById('intro');
-      const adCard = document.getElementById('ad-card');
-      const progressPanel = document.getElementById('progress-panel');
-      const progressLabel = document.getElementById('progress-label');
-      const timer = document.getElementById('timer');
-      const progressFill = document.getElementById('progress-fill');
-      const status = document.getElementById('status');
-      const continueButton = document.getElementById('continue-button');
-      const errorBox = document.getElementById('error-box');
-      const errorTitle = document.getElementById('error-title');
-      const errorDescription = document.getElementById('error-description');
-      const adSlot = document.getElementById('ad-slot-3');
-      const adFallback = document.getElementById('ad-fallback');
+      // Compatível com o formato criado por admin.html: /# + encodeURIComponent(URL).
+      const destination = parseDestination(window.location.hash);
+      const linkScreen = document.getElementById('link-screen');
+      const errorScreen = document.getElementById('error-screen');
+      const destinationDomain = document.getElementById('destination-domain');
+      const destinationButton = document.getElementById('destination-button');
+      const secondsPerStep = 5;
+      const loadedAdScripts = new Set();
+      let activeTimer = null;
+      let activeStep = 1;
 
-      // Esconde o texto de reserva se o script do banner inserir um iframe.
-      function updateAdFallback() {
-        if (adSlot && adFallback && adSlot.querySelector('iframe')) {
-          adFallback.hidden = true;
-        }
-      }
-      updateAdFallback();
-      if (adSlot && adFallback) {
-        const adObserver = new MutationObserver(updateAdFallback);
-        adObserver.observe(adSlot, { childList: true, subtree: true });
-      }
+      document.getElementById('year').textContent = String(new Date().getFullYear());
 
-      function showError(titleText, descriptionText) {
-        title.textContent = titleText;
-        intro.textContent = 'Confira o link recebido e tente novamente.';
-        adCard.hidden = true;
-        progressPanel.hidden = true;
-        status.hidden = true;
-        continueButton.hidden = true;
-        errorTitle.textContent = titleText;
-        errorDescription.textContent = descriptionText;
-        errorBox.hidden = false;
-      }
-
-      function getDestinationFromHash() {
-        // Compatível com o admin.html atual: origem + "/#" + encodeURIComponent(URL).
-        const encoded = window.location.hash.slice(1);
-        if (!encoded) {
-          throw new Error('Este endereço não contém um destino. Abra o link completo gerado pelo painel administrativo.');
-        }
-
-        let decoded;
-        try {
-          decoded = decodeURIComponent(encoded);
-        } catch (error) {
-          throw new Error('O destino está codificado de forma inválida. Gere o link novamente no painel administrativo.');
-        }
-
-        let destination;
-        try {
-          destination = new URL(decoded);
-        } catch (error) {
-          throw new Error('O endereço de destino não é válido. Gere o link novamente.');
-        }
-
-        if (destination.protocol !== 'http:' && destination.protocol !== 'https:') {
-          throw new Error('Por segurança, só são aceitos destinos que começam com http:// ou https://.');
-        }
-
-        return destination.href;
-      }
-
-      let destinationUrl;
-      try {
-        destinationUrl = getDestinationFromHash();
-      } catch (error) {
-        showError('Link não encontrado', error.message);
+      if (!destination) {
+        linkScreen.hidden = true;
+        errorScreen.hidden = false;
         return;
       }
 
-      continueButton.href = destinationUrl;
-      let remaining = countdownSeconds;
+      destinationDomain.textContent = destination.hostname;
+      destinationButton.href = destination.href;
+      loadAdForStep(1);
+      startCountdown(1);
 
-      function renderTimer() {
-        timer.innerHTML = `${remaining} <span class="timer-unit">seg</span>`;
-        const elapsedPercent = ((countdownSeconds - remaining) / countdownSeconds) * 100;
-        progressFill.style.width = `${Math.min(100, Math.max(0, elapsedPercent))}%`;
+      document.getElementById('next-1').addEventListener('click', () => showStep(2));
+      document.getElementById('next-2').addEventListener('click', () => showStep(3));
+      destinationButton.addEventListener('click', event => {
+        // aria-disabled sozinho só altera a aparência; impeça a navegação até o fim do temporizador.
+        if (destinationButton.getAttribute('aria-disabled') === 'true') event.preventDefault();
+      });
+
+      function parseDestination(hash) {
+        const encoded = String(hash || '').replace(/^#/, '').trim();
+        if (!encoded) return null;
+        try {
+          const decoded = decodeURIComponent(encoded);
+          const url = new URL(decoded);
+          if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+          return url;
+        } catch (_) {
+          return null;
+        }
       }
 
-      renderTimer();
-      status.textContent = 'O botão será liberado automaticamente ao final da contagem.';
-
-      const countdown = window.setInterval(() => {
-        remaining -= 1;
-        renderTimer();
-
-        if (remaining <= 0) {
-          window.clearInterval(countdown);
-          progressFill.style.width = '100%';
-          progressLabel.textContent = 'Seu destino está pronto';
-          timer.innerHTML = '<span class="timer-unit">Acesso liberado</span>';
-          status.textContent = 'Continue quando estiver pronto. Não é necessário clicar em anúncios.';
-          continueButton.hidden = false;
+      function showStep(step) {
+        if (step < 1 || step > 3) return;
+        if (activeTimer !== null) {
+          window.clearInterval(activeTimer);
+          activeTimer = null;
         }
-      }, 1000);
+        activeStep = step;
+
+        document.querySelectorAll('[data-step]').forEach(panel => {
+          panel.hidden = Number(panel.dataset.step) !== step;
+        });
+        document.querySelectorAll('[data-progress]').forEach(item => {
+          const itemStep = Number(item.dataset.progress);
+          item.classList.toggle('is-complete', itemStep < step);
+          if (itemStep === step) item.setAttribute('aria-current', 'step');
+          else item.removeAttribute('aria-current');
+          const num = item.querySelector('.progress-num');
+          if (itemStep < step) num.textContent = '✓';
+          else num.textContent = String(itemStep);
+        });
+
+        loadAdForStep(step);
+        startCountdown(step);
+        document.getElementById(`step-${step}`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      function startCountdown(step) {
+        let remaining = secondsPerStep;
+        const number = document.getElementById(`timer-${step}`);
+        const message = document.getElementById(`timer-message-${step}`);
+        const nextButton = step < 3 ? document.getElementById(`next-${step}`) : destinationButton;
+
+        if (step < 3) nextButton.disabled = true;
+        else destinationButton.setAttribute('aria-disabled', 'true');
+        number.textContent = String(remaining);
+        message.textContent = step < 3 ? 'O botão será liberado em instantes.' : 'O acesso será liberado em instantes.';
+
+        activeTimer = window.setInterval(() => {
+          if (activeStep !== step) {
+            window.clearInterval(activeTimer);
+            activeTimer = null;
+            return;
+          }
+          remaining -= 1;
+          number.textContent = String(Math.max(remaining, 0));
+          if (remaining <= 0) {
+            window.clearInterval(activeTimer);
+            activeTimer = null;
+            message.textContent = step < 3 ? 'Etapa concluída. Você pode continuar.' : 'Pronto. O link de destino está liberado.';
+            if (step < 3) nextButton.disabled = false;
+            else destinationButton.setAttribute('aria-disabled', 'false');
+          }
+        }, 1000);
+      }
+
+      function loadAdForStep(step) {
+        if (step === 1) {
+          // Banner 300x250 informado pelo proprietário do site.
+          const slot = document.getElementById('banner-ad');
+          if (slot.dataset.loaded === 'true') return;
+          slot.dataset.loaded = 'true';
+          window.atOptions = {
+            key: 'b592fe46c22fe1eee55ba93410a32a9b',
+            format: 'iframe',
+            height: 250,
+            width: 300,
+            params: {}
+          };
+          addScriptOnce('banner-300x250', 'https://bauval.org/22/b592fe46c22fe1eee55ba93410a32a9b', slot, false);
+          return;
+        }
+
+        if (step === 2) {
+          const slot = document.getElementById('partner-ad');
+          if (slot.dataset.loaded === 'true') return;
+          slot.dataset.loaded = 'true';
+          addScriptOnce('partner-ad-script', 'https://abscloud.org/1/0fc4a6a69df61f127e72d0c4c29732a5', slot, true);
+          return;
+        }
+
+        if (step === 3) {
+          const slot = document.getElementById('final-ad');
+          if (slot.dataset.loaded === 'true') return;
+          slot.dataset.loaded = 'true';
+          addScriptOnce('final-ad-script', 'https://bauval.org/14/97ffabce62aad21c34830ae7c85d43ff', slot, true);
+        }
+      }
+
+      function addScriptOnce(id, src, container, disableCloudflareAsync) {
+        if (loadedAdScripts.has(id)) return;
+        loadedAdScripts.add(id);
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        if (disableCloudflareAsync) script.setAttribute('data-cfasync', 'false');
+        script.referrerPolicy = 'strict-origin-when-cross-origin';
+        script.addEventListener('error', () => {
+          // Falha da rede de anúncios não deve impedir que a pessoa acesse o destino.
+          const fallback = container.querySelector('.ad-placeholder');
+          if (fallback) {
+            const strong = fallback.querySelector('strong');
+            if (strong) strong.textContent = 'Anúncio indisponível no momento';
+          }
+        }, { once: true });
+        container.appendChild(script);
+      }
     })();
   </script>
 </body>
