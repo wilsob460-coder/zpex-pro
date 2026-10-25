@@ -202,7 +202,7 @@
               <span>A exibição depende da disponibilidade da rede e das configurações do navegador.</span>
             </div>
           </div>
-          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <p class="ad-note">Não é preciso clicar no anúncio. O tempo conta quando pelo menos metade desta área está visível e a página está ativa.</p>
           <div class="step-controls">
             <span class="timer-copy"><span id="timer-1" class="timer-count" aria-live="polite">5</span><span id="timer-message-1">O botão será liberado em instantes.</span></span>
             <button id="next-1" class="button" type="button" disabled>Próxima etapa <span aria-hidden="true">→</span></button>
@@ -225,7 +225,7 @@
               <span>A disponibilidade pode variar conforme a rede de anúncios.</span>
             </div>
           </div>
-          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <p class="ad-note">Não é preciso clicar no anúncio. O tempo conta quando pelo menos metade desta área está visível e a página está ativa.</p>
           <div class="step-controls">
             <span class="timer-copy"><span id="timer-2" class="timer-count" aria-live="polite">5</span><span id="timer-message-2">O botão será liberado em instantes.</span></span>
             <button id="next-2" class="button" type="button" disabled>Última etapa <span aria-hidden="true">→</span></button>
@@ -248,7 +248,7 @@
               <span>O formato exibido depende das configurações da rede de anúncios.</span>
             </div>
           </div>
-          <p class="ad-note">Não é necessário clicar no anúncio para continuar.</p>
+          <p class="ad-note">Não é preciso clicar no anúncio. O tempo conta quando pelo menos metade desta área está visível e a página está ativa.</p>
           <div class="step-controls">
             <span class="timer-copy"><span id="timer-3" class="timer-count" aria-live="polite">5</span><span id="timer-message-3">O acesso será liberado em instantes.</span></span>
             <a id="destination-button" class="button button--destination" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Acessar link <span aria-hidden="true">↗</span></a>
@@ -283,7 +283,7 @@
       const errorScreen = document.getElementById('error-screen');
       const destinationDomain = document.getElementById('destination-domain');
       const destinationButton = document.getElementById('destination-button');
-      const secondsPerStep = 5;
+      const secondsPerStep = 10;
       const loadedAdScripts = new Set();
       let activeTimer = null;
       let activeStep = 1;
@@ -356,7 +356,7 @@
         if (step < 3) nextButton.disabled = true;
         else destinationButton.setAttribute('aria-disabled', 'true');
         number.textContent = String(remaining);
-        message.textContent = step < 3 ? 'O botão será liberado em instantes.' : 'O acesso será liberado em instantes.';
+        message.textContent = 'Mantenha a área de publicidade visível para contar 10 segundos.';
 
         activeTimer = window.setInterval(() => {
           if (activeStep !== step) {
@@ -364,6 +364,19 @@
             activeTimer = null;
             return;
           }
+
+          // Conte apenas tempo com a página em primeiro plano e a área publicitária visível.
+          // Não tenta detectar nem exigir cliques no anúncio: isso depende da rede de anúncios.
+          if (document.visibilityState !== 'visible') {
+            message.textContent = 'O cronômetro pausa enquanto esta página está em segundo plano.';
+            return;
+          }
+          if (!isAdAreaVisible(step)) {
+            message.textContent = 'Role até a publicidade e mantenha pelo menos metade dela visível.';
+            return;
+          }
+
+          message.textContent = 'Aguarde o tempo desta etapa terminar.';
           remaining -= 1;
           number.textContent = String(Math.max(remaining, 0));
           if (remaining <= 0) {
@@ -374,6 +387,22 @@
             else destinationButton.setAttribute('aria-disabled', 'false');
           }
         }, 1000);
+      }
+
+      function isAdAreaVisible(step) {
+        const slotId = step === 1 ? 'banner-ad' : step === 2 ? 'partner-ad' : 'final-ad';
+        const slot = document.getElementById(slotId);
+        if (!slot) return false;
+
+        const rect = slot.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return false;
+
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
+        const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+        const visibleRatio = (visibleWidth * visibleHeight) / (rect.width * rect.height);
+        return visibleRatio >= 0.5;
       }
 
       function loadAdForStep(step) {
